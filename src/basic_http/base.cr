@@ -5,7 +5,6 @@ module BasicHttp
     getter :route
     def initialize
       @route   = Router.new
-      # @handler = Handler.new
     end
 
     def run(port=2000)
@@ -19,17 +18,7 @@ module BasicHttp
     end
 
     private def respond_by(request)
-      if @route.map.has_key?(request.path.to_s)
-        log(request)
-        HTTP::Response.ok("text/html",@route.map[request.path.to_s].call)
-      else
-        log(request)
-        HTTP::Response.not_found
-      end
-    end
-
-    private def log(request)
-      puts Logger.new(request,self).result
+      Handler.new(request,self).respond
     end
   end
 end
