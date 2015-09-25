@@ -2,8 +2,10 @@ require "http/server"
 
 module BasicHttp
   class Base
+    getter :route
     def initialize
-      @route = Router.new
+      @route   = Router.new
+      # @handler = Handler.new
     end
 
     def run(port=2000)
@@ -27,7 +29,7 @@ module BasicHttp
     end
 
     private def log(request)
-      puts Logger.new(request).result
+      puts Logger.new(request,self).result
     end
   end
 end
