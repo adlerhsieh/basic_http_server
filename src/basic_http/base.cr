@@ -4,7 +4,7 @@ module BasicHttp
   class Base
     getter :route
     def initialize
-      @route   = Router.new
+      @route = Router.new
     end
 
     def run(port=2000)
@@ -17,6 +17,8 @@ module BasicHttp
       @route.set(route, block)
     end
 
+    # Sending self to other classes as parameters
+    # Classes communicate with each other through instance variables in this class
     private def respond_by(request)
       Handler.new(request,self).respond
     end

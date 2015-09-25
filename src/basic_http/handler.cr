@@ -8,16 +8,17 @@ module BasicHttp
 
     def respond
       if @route.has_key?(@request.path.to_s)
-        log
+        log(200)
         HTTP::Response.ok("text/html", @route[@request.path.to_s].call)
       else
-        log
+        log(404)
         HTTP::Response.not_found
       end
     end
 
-    def log
-      puts Logger.new(@request,@app).result
+    # check route exists and call Logger
+    def log(http_status)
+      puts Logger.new(@request,http_status).result
     end
   end
 end
