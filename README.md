@@ -1,4 +1,4 @@
-# basic_http
+# A basic http server
 
-My Basic web framework in Crystal.
+Project moves to [Iceberg](https://github.com/adlerhsieh/iceberg) for further development.
 
